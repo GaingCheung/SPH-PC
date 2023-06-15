@@ -1,4 +1,4 @@
-# app
+# SPH-PC
 
 ## Project setup
 ```
