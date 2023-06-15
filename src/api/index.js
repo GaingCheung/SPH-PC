@@ -1,0 +1,23 @@
+import requests from "./request"
+import requestsMock from "./requestMock"
+
+export const reqCategoryList = () => requests.get(`/product/getBaseCategoryList`)
+export const reqBanner = () => requestsMock.get('/banner')
+export const reqFloor = () => requestsMock.get('/floor')
+export const reqSearch = (params) => requests({url: '/list', method: 'post', data: params})
+export const reqDetail = (skuId) => requests({ url: `/item/${ skuId }`, method: 'get' })
+export const reqAddSku = (skuId, skuNum) => requests({ url:`/cart/addToCart/${ skuId }/${ skuNum }`, method: 'post'})
+export const reqShopCart = () => requests({ url:'/cart/cartList', method:'get'})
+export const reqDelete = (skuId) => requests({ url:`/cart/deleteCart/${skuId}`, method:'delete'})
+export const reqChecked = (skuID, isChecked) => requests({ url: `/cart/checkCart/${skuID}/${isChecked}`, method:'get'})
+export const reqPhoneCode = (phone) => requests({ url:`/user/passport/sendCode/${phone}`, method:'get' })
+export const reqRegisterUser = (data) => requests({ url:'/user/passport/register', method:'post', data})
+export const reqLogin = (data) => requests({ url:'/user/passport/login', method:'post',data })
+export const reqUserInfo = () => requests({ url:'/user/passport/auth/getUserInfo', method:'get' })
+export const reqLogout = () => requests({ url:'/user/passport/logout', method:'get'})
+export const reqAddress = () => requests({url:'/user/userAddress/auth/findUserAddressList', method:'get'})
+export const reqOrder = () => requests({url:'/order/auth/trade', method:'get'})
+export const reqSubmitOrder = (tradeNo,data) => requests({url:`/order/auth/submitOrder?tradeNo=${tradeNo}`, method:'post', data})
+export const reqPayment = (orderId) => requests({url:`/payment/weixin/createNative/${orderId}`,method:'get'})
+export const reqPaySuccess = (orderId) => requests({url:`/payment/weixin/queryPayStatus/${orderId}`, method:'get'})
+export const reqMyorderList = (page,limit) => requests({url:`/order/auth/${page}/${limit}`, method:'get'})
